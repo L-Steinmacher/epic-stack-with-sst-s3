@@ -8,7 +8,7 @@
     "build": "run-s build:*",
     "build:remix": "remix build --sourcemap",
     "build:server": "tsx ./other/build-server.ts",
-    "dev": "remix dev -c \"node ./server/dev-server.js\" --no-restart",
+    "dev": "sst bind remix dev",
     "prisma:studio": "prisma studio",
     "format": "prettier --write .",
     "lint": "eslint .",
@@ -24,7 +24,9 @@
     "test:e2e:run": "cross-env CI=true playwright test",
     "test:e2e:install": "npx playwright install --with-deps chromium",
     "typecheck": "tsc",
-    "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run"
+    "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run",
+    "sst:deploy": "sst deploy",
+    "sst:dev": "sst dev"
   },
   "eslintIgnore": [
     "/node_modules",
@@ -135,7 +137,10 @@
     "typescript": "^5.1.5",
     "vite": "^4.3.9",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.32.2"
+    "vitest": "^0.32.2",
+    "sst": "^2.18.1",
+    "aws-cdk-lib": "2.84.0",
+    "constructs": "10.1.156"
   },
   "engines": {
     "node": "18"
